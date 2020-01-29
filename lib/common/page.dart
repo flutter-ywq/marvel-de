@@ -26,16 +26,19 @@ showSnackBar(BuildContext context, String text) {
   );
 }
 
-void showMsg(BuildContext context, String msg, {String title}) {
-  msg = msg ?? '消息内容';
-  title = title ?? '提示';
+void showMsg(BuildContext context, String msg,
+    {String title, String positiveText}) {
+  msg = msg ?? '';
+  title = title ?? '';
+  positiveText = positiveText ?? '确定';
   showDialog(
     context: context,
     barrierDismissible: false,
     builder: (BuildContext context) {
       return MessageDialog(
+        title: title,
         message: msg,
-        positiveText: '确定',
+        positiveText: positiveText,
         positivePressEvent: () {
           Navigator.pop(context);
         },

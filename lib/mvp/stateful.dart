@@ -19,8 +19,8 @@ abstract class Stateful<T extends StatefulWidget, P extends Presenter>
 
   updateState(tag, params);
 
-  showMsg(String msg, {String title}) {
-    prefix0.showMsg(context, msg, title: title);
+  showMsg(String msg, {String title, String positiveText}) {
+    prefix0.showMsg(context, msg, title: title, positiveText: positiveText);
   }
 
   showSnackBar(String text) {
