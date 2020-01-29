@@ -6,7 +6,7 @@ import 'package:flutter/cupertino.dart';
 ///
 /// @date 2019-12-11
 mixin View {
-  showMsg(String msg, {String title});
+  showMsg(String msg, {String title, String positiveText});
 
   update({tag, params});
 
