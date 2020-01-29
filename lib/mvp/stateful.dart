@@ -42,6 +42,10 @@ abstract class Stateful<T extends StatefulWidget, P extends Presenter>
     );
   }
 
+  showSnackBar(String text) {
+    prefix0.showSnackBar(context, text);
+  }
+
   @override
   void initState() {
     super.initState();

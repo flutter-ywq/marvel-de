@@ -15,3 +15,12 @@ void launch(BuildContext context, Widget widget) {
     ),
   );
 }
+
+showSnackBar(BuildContext context, String text) {
+  return Scaffold.of(context).showSnackBar(
+    SnackBar(
+      duration: Duration(milliseconds: 1500),
+      content: Text(text),
+    ),
+  );
+}
