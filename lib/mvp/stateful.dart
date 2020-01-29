@@ -20,26 +20,7 @@ abstract class Stateful<T extends StatefulWidget, P extends Presenter>
   updateState(tag, params);
 
   showMsg(String msg, {String title}) {
-    msg = msg ?? '消息内容';
-    title = title ?? '提示';
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text(title),
-          content: Text(msg),
-          actions: <Widget>[
-            new FlatButton(
-              child: new Text('确定'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
-    );
+    prefix0.showMsg(context, msg, title: title);
   }
 
   showSnackBar(String text) {

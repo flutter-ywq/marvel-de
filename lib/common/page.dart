@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:marvel/widgets/MessageDialog.dart';
 
 /// @description 页面相关的方法
 ///
@@ -22,5 +23,23 @@ showSnackBar(BuildContext context, String text) {
       duration: Duration(milliseconds: 1500),
       content: Text(text),
     ),
+  );
+}
+
+void showMsg(BuildContext context, String msg, {String title}) {
+  msg = msg ?? '消息内容';
+  title = title ?? '提示';
+  showDialog(
+    context: context,
+    barrierDismissible: false,
+    builder: (BuildContext context) {
+      return MessageDialog(
+        message: msg,
+        positiveText: '确定',
+        positivePressEvent: () {
+          Navigator.pop(context);
+        },
+      );
+    },
   );
 }
