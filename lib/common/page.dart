@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:marvel/widgets/MessageDialog.dart';
+import 'package:marvel/widgets/message_dialog.dart';
 
 /// @description 页面相关的方法
 ///
