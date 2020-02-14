@@ -7,7 +7,14 @@ import 'package:flutter/material.dart';
 /// @date 2020-02-12
 
 class Loading {
+
+  static bool _isShowing = false;
+
   static show(BuildContext context, String message) {
+    if (_isShowing) {
+      return;
+    }
+    _isShowing = true;
     showDialog(
         context: context,
         barrierDismissible: false,
@@ -19,7 +26,10 @@ class Loading {
   }
 
   static cancel(BuildContext context) {
-    Navigator.pop(context);
+    if (_isShowing) {
+      Navigator.pop(context);
+      _isShowing = false;
+    }
   }
 }
 
