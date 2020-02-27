@@ -10,7 +10,7 @@ import 'package:marvel/common/common.dart' as prefix0;
 /// @author 燕文强
 ///
 /// @date 2019-12-11
-abstract class YStateful<T extends StatefulWidget, P extends Presenter> extends State<T> with View, WidgetsBindingObserver {
+abstract class Stateful<T extends StatefulWidget, P extends Presenter> extends State<T> with View, WidgetsBindingObserver {
   bool bindingObserver = false;
 
   P presenter;
