@@ -33,7 +33,7 @@ abstract class Stateful<T extends StatefulWidget, P extends Presenter> extends S
   void initState() {
     super.initState();
     if (bindingObserver) {
-      logFormat('绑定');
+      logFormat('bind WidgetsBindingObserver');
       WidgetsBinding.instance.addObserver(this);
     }
     presenter = initPresenter();
@@ -45,6 +45,7 @@ abstract class Stateful<T extends StatefulWidget, P extends Presenter> extends S
   @override
   void dispose() {
     super.dispose();
+    logFormat('remove WidgetsBindingObserver');
     WidgetsBinding.instance.removeObserver(this);
   }
 
