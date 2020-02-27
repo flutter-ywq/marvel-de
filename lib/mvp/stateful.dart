@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:marvel/marvel.dart';
+import 'package:marvel/utils/logger.dart';
 import 'view.dart';
 import 'package:marvel/common/common.dart' as prefix0;
 
@@ -9,8 +10,9 @@ import 'package:marvel/common/common.dart' as prefix0;
 /// @author 燕文强
 ///
 /// @date 2019-12-11
-abstract class Stateful<T extends StatefulWidget, P extends Presenter>
-    extends State<T> with View {
+abstract class YStateful<T extends StatefulWidget, P extends Presenter> extends State<T> with View, WidgetsBindingObserver {
+  bool bindingObserver = false;
+
   P presenter;
 
   P initPresenter();
@@ -30,10 +32,20 @@ abstract class Stateful<T extends StatefulWidget, P extends Presenter>
   @override
   void initState() {
     super.initState();
+    if (bindingObserver) {
+      logFormat('绑定');
+      WidgetsBinding.instance.addObserver(this);
+    }
     presenter = initPresenter();
     WidgetsBinding.instance.addPostFrameCallback((callback) {
       viewDidLoad(callback);
     });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    WidgetsBinding.instance.removeObserver(this);
   }
 
   @override
@@ -48,4 +60,27 @@ abstract class Stateful<T extends StatefulWidget, P extends Presenter>
 
   @override
   BuildContext getContext() => this.context;
+
+  @override
+  void didChangeAccessibilityFeatures() {}
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    log('lifecycle changed: $state');
+  }
+
+  @override
+  void didChangeLocales(List<Locale> locale) {}
+
+  @override
+  void didChangeMetrics() {}
+
+  @override
+  void didChangePlatformBrightness() {}
+
+  @override
+  void didChangeTextScaleFactor() {}
+
+  @override
+  void didHaveMemoryPressure() {}
 }
