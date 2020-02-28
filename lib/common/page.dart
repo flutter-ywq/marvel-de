@@ -7,14 +7,13 @@ import 'package:marvel/widgets/message_dialog.dart';
 ///
 /// @date 2019-12-13
 void launch(BuildContext context, Widget widget) {
-  Navigator.push(
-    context,
-    MaterialPageRoute(
-      builder: (context) {
-        return widget;
-      },
-    ),
-  );
+  Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return Scaffold(body: widget);
+  }));
+}
+
+void launchAndCloseSelf(BuildContext context, Widget widget) {
+  Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => Scaffold(body: widget)), (_) => false);
 }
 
 showSnackBar(BuildContext context, String text) {
@@ -26,8 +25,7 @@ showSnackBar(BuildContext context, String text) {
   );
 }
 
-void showMsg(BuildContext context, String msg,
-    {String title, String positiveText}) {
+void showMsg(BuildContext context, String msg, {String title, String positiveText}) {
   msg = msg ?? '';
   title = title ?? '';
   positiveText = positiveText ?? '确定';
