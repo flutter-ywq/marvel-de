@@ -55,8 +55,13 @@ abstract class Stateful<T extends StatefulWidget, P extends Presenter> extends S
   }
 
   @override
-  launch(Widget widget) {
-    prefix0.launch(context, widget);
+  Future launch(Widget widget) {
+    return prefix0.launch(context, widget);
+  }
+
+  @override
+  Future launchAndCloseSelf(Widget widget) {
+    return prefix0.launchAndCloseSelf(context, widget);
   }
 
   @override

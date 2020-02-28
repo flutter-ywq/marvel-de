@@ -10,7 +10,9 @@ mixin View {
 
   update({tag, params});
 
-  launch(Widget widget);
+  Future launch(Widget widget);
+
+  Future launchAndCloseSelf(Widget widget);
 
   BuildContext getContext();
 }

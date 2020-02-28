@@ -6,14 +6,14 @@ import 'package:marvel/widgets/message_dialog.dart';
 /// @author 燕文强
 ///
 /// @date 2019-12-13
-void launch(BuildContext context, Widget widget) {
-  Navigator.push(context, MaterialPageRoute(builder: (context) {
+Future launch(BuildContext context, Widget widget) {
+  return Navigator.push(context, MaterialPageRoute(builder: (context) {
     return Scaffold(body: widget);
   }));
 }
 
-void launchAndCloseSelf(BuildContext context, Widget widget) {
-  Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => Scaffold(body: widget)), (_) => false);
+Future launchAndCloseSelf(BuildContext context, Widget widget) {
+  return Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => Scaffold(body: widget)), (_) => false);
 }
 
 showSnackBar(BuildContext context, String text) {
