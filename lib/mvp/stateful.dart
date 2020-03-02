@@ -45,8 +45,10 @@ abstract class Stateful<T extends StatefulWidget, P extends Presenter> extends S
   @override
   void dispose() {
     super.dispose();
-    logFormat('remove WidgetsBindingObserver');
-    WidgetsBinding.instance.removeObserver(this);
+    if (bindingObserver) {
+      logFormat('remove WidgetsBindingObserver');
+      WidgetsBinding.instance.removeObserver(this);
+    }
   }
 
   @override

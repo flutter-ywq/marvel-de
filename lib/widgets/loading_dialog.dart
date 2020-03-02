@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 /// @date 2020-02-12
 
 class Loading {
-
   static bool _isShowing = false;
 
   static show(BuildContext context, String message) {
