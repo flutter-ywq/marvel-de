@@ -93,7 +93,7 @@ class MessageDialog extends Dialog {
   static void show({
     @required BuildContext context,
     String title,
-    String message = '',
+    String message,
     String positiveText = '确定',
     String negativeText,
     bool barrierDismissible = false,
@@ -105,10 +105,8 @@ class MessageDialog extends Dialog {
       barrierDismissible: barrierDismissible,
       builder: (context) {
         return CupertinoAlertDialog(
-          title: title == null
-              ? null
-              : Container(
-            margin: EdgeInsets.only(bottom: 15),
+          title: title == null ? null : Container(
+            margin: EdgeInsets.only(bottom: 10),
             child: Text(
               title,
               style: TextStyle(
@@ -116,10 +114,8 @@ class MessageDialog extends Dialog {
               ),
             ),
           ),
-          content: message == null
-              ? null
-              : Container(
-            margin: EdgeInsets.only(top: 10, bottom: 10),
+          content: message == null ? null : Container(
+            margin: EdgeInsets.only(top: 15, bottom: 15),
             child: Text(
               message,
               style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
@@ -131,8 +127,8 @@ class MessageDialog extends Dialog {
     );
   }
 
-  static List<Widget> _actions(
-      BuildContext context, String positiveText, String negativeText, Function positivePressEvent, Function negativePressEvent) {
+  static List<Widget> _actions(BuildContext context, String positiveText, String negativeText, Function positivePressEvent,
+      Function negativePressEvent) {
     List<Widget> actions = <Widget>[
       CupertinoDialogAction(
         child: Text(
