@@ -47,8 +47,7 @@ void showMsg(BuildContext context, String msg, {String title, String positiveTex
   );
 }
 
-void showMsg2(BuildContext context, String msg, {String title, String positiveText}) {
+void showMessage(BuildContext context, String msg, {String title, String positiveText}) {
   msg = msg ?? '';
-  positiveText = positiveText ?? '确定';
   MessageDialog.show(context: context, title: title, positiveText: positiveText, message: msg);
 }
