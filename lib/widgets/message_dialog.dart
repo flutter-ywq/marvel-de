@@ -108,20 +108,23 @@ class MessageDialog extends Dialog {
           title: title == null
               ? null
               : Container(
-                  margin: EdgeInsets.only(bottom: 15),
-                  child: Text(
-                    title,
-                    style: TextStyle(
-                      fontSize: 18,
-                    ),
-                  ),
-                ),
+            margin: EdgeInsets.only(bottom: 15),
+            child: Text(
+              title,
+              style: TextStyle(
+                fontSize: 18,
+              ),
+            ),
+          ),
           content: message == null
               ? null
-              : Text(
-                  message,
-                  style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
-                ),
+              : Container(
+            margin: EdgeInsets.only(top: 10, bottom: 10),
+            child: Text(
+              message,
+              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+            ),
+          ),
           actions: _actions(context, positiveText, negativeText, positivePressEvent, negativePressEvent),
         );
       },
