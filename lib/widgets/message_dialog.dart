@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 /// @description MessageDialog
@@ -66,13 +67,11 @@ class MessageDialog extends Dialog {
                   Container(
                     constraints: BoxConstraints(minHeight: 20.0),
                     child: Padding(
-                      padding: const EdgeInsets.only(
-                          bottom: 35, left: 13, right: 13),
+                      padding: const EdgeInsets.only(bottom: 35, left: 13, right: 13),
                       child: IntrinsicHeight(
                         child: Text(
                           message,
-                          style: TextStyle(
-                              fontSize: 16.0, fontWeight: FontWeight.bold),
+                          style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
                         ),
                       ),
                     ),
@@ -91,12 +90,91 @@ class MessageDialog extends Dialog {
     );
   }
 
+  static void show({
+    @required BuildContext context,
+    String title,
+    String message = '',
+    String positiveText = '确定',
+    String negativeText,
+    bool barrierDismissible = false,
+    Function positivePressEvent,
+    Function negativePressEvent,
+  }) {
+    showDialog<bool>(
+      context: context,
+      barrierDismissible: barrierDismissible,
+      builder: (context) {
+        return CupertinoAlertDialog(
+          title: title == null
+              ? null
+              : Container(
+                  margin: EdgeInsets.only(bottom: 15),
+                  child: Text(
+                    title,
+                    style: TextStyle(
+                      fontSize: 18,
+                    ),
+                  ),
+                ),
+          content: message == null
+              ? null
+              : Text(
+                  message,
+                  style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+                ),
+          actions: _actions(context, positiveText, negativeText, positivePressEvent, negativePressEvent),
+        );
+      },
+    );
+  }
+
+  static List<Widget> _actions(
+      BuildContext context, String positiveText, String negativeText, Function positivePressEvent, Function negativePressEvent) {
+    List<Widget> actions = <Widget>[
+      CupertinoDialogAction(
+        child: Text(
+          positiveText,
+          style: TextStyle(
+            color: Colors.blueAccent,
+            fontSize: 16.0,
+          ),
+        ),
+        onPressed: () {
+          Navigator.of(context).pop();
+          if (positivePressEvent != null) {
+            positivePressEvent();
+          }
+        },
+      ),
+    ];
+
+    if (negativeText != null) {
+      actions.insert(
+        0,
+        CupertinoDialogAction(
+          child: Text(
+            negativeText,
+            style: TextStyle(
+              color: Colors.blueAccent,
+              fontSize: 16.0,
+            ),
+          ),
+          onPressed: () {
+            Navigator.of(context).pop();
+            if (negativePressEvent != null) {
+              negativePressEvent();
+            }
+          },
+        ),
+      );
+    }
+    return actions;
+  }
+
   Widget _buildBottomButtonGroup() {
     var widgets = <Widget>[];
-    if (negativeText != null && negativeText.isNotEmpty)
-      widgets.add(_buildBottomButton(negativeText, negativePressEvent));
-    if (positiveText != null && positiveText.isNotEmpty)
-      widgets.add(_buildBottomButton(positiveText, positivePressEvent));
+    if (negativeText != null && negativeText.isNotEmpty) widgets.add(_buildBottomButton(negativeText, negativePressEvent));
+    if (positiveText != null && positiveText.isNotEmpty) widgets.add(_buildBottomButton(positiveText, positivePressEvent));
     return Flex(
       direction: Axis.horizontal,
       children: widgets,
