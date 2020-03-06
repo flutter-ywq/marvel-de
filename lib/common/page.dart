@@ -29,5 +29,27 @@ void showMsg(BuildContext context, String msg, {String title, String positiveTex
   msg = msg ?? '';
   title = title ?? '';
   positiveText = positiveText ?? '确定';
+//  MessageDialog.show(context: context, title: title, positiveText: positiveText,message: msg);
+
+  showDialog(
+    context: context,
+    barrierDismissible: false,
+    builder: (BuildContext context) {
+      return MessageDialog(
+        title: title,
+        message: msg,
+        positiveText: positiveText,
+        positivePressEvent: () {
+          Navigator.pop(context);
+        },
+      );
+    },
+  );
+}
+
+void showMsg2(BuildContext context, String msg, {String title, String positiveText}) {
+  msg = msg ?? '';
+  title = title ?? '';
+  positiveText = positiveText ?? '确定';
   MessageDialog.show(context: context, title: title, positiveText: positiveText, message: msg);
 }
