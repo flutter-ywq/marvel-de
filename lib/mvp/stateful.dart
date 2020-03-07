@@ -22,7 +22,7 @@ abstract class Stateful<T extends StatefulWidget, P extends Presenter> extends S
   updateState(tag, params);
 
   showMsg(String msg, {String title, String positiveText}) {
-    prefix0.showMsg(context, msg, title: title, positiveText: positiveText);
+    prefix0.showMessage(context, msg, title: title, positiveText: positiveText);
   }
 
   showSnackBar(String text) {
@@ -58,12 +58,12 @@ abstract class Stateful<T extends StatefulWidget, P extends Presenter> extends S
 
   @override
   Future launch(Widget widget) {
-    return prefix0.launch(context, widget);
+    return prefix0.push(context, widget);
   }
 
   @override
   Future launchAndCloseSelf(Widget widget) {
-    return prefix0.launchAndCloseSelf(context, widget);
+    return prefix0.pushAndCloseSelf(context, widget);
   }
 
   @override
