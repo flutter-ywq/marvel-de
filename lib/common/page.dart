@@ -6,13 +6,13 @@ import 'package:marvel/widgets/message_dialog.dart';
 /// @author 燕文强
 ///
 /// @date 2019-12-13
-Future push(BuildContext context, Widget widget) {
+Future launch(BuildContext context, Widget widget) {
   return Navigator.push(context, MaterialPageRoute(builder: (context) {
     return Scaffold(body: widget);
   }));
 }
 
-Future pushAndCloseSelf(BuildContext context, Widget widget) {
+Future launchAndCloseSelf(BuildContext context, Widget widget) {
   return Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => Scaffold(body: widget)), (_) => false);
 }
 
