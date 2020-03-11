@@ -8,6 +8,8 @@ import 'package:flutter/cupertino.dart';
 mixin View {
   showMsg(String msg, {String title, String positiveText});
 
+  void toast(String msg, {int gravity = 1});
+
   update({tag, params});
 
   Future launch(Widget widget);

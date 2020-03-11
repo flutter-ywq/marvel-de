@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:marvel/widgets/message_dialog.dart';
+import 'package:toast/toast.dart';
 
 /// @description 页面相关的方法
 ///
@@ -23,6 +24,25 @@ showSnackBar(BuildContext context, String text) {
       content: Text(text),
     ),
   );
+}
+
+void toast(
+  BuildContext context,
+  String msg, {
+  int gravity = 1,
+  int duration = 1,
+  Color backgroundColor = const Color(0xAA000000),
+  Color textColor = Colors.white,
+  double backgroundRadius = 20,
+  Border border,
+}) {
+  Toast.show(msg, context,
+      duration: 2,
+      gravity: gravity,
+      backgroundColor: backgroundColor,
+      textColor: textColor,
+      backgroundRadius: backgroundRadius,
+      border: border);
 }
 
 void showMessage(

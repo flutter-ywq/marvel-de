@@ -25,6 +25,10 @@ abstract class Stateful<T extends StatefulWidget, P extends Presenter> extends S
     prefix0.showMessage(context, msg, title: title, positiveText: positiveText);
   }
 
+  void toast(String msg, {int gravity = 1}) {
+    prefix0.toast(context, msg, gravity: gravity);
+  }
+
   showSnackBar(String text) {
     prefix0.showSnackBar(context, text);
   }
