@@ -21,12 +21,39 @@ abstract class Stateful<T extends StatefulWidget, P extends Presenter> extends S
 
   updateState(tag, params);
 
-  showMsg(String msg, {String title, String positiveText}) {
-    prefix0.showMessage(context, msg, title: title, positiveText: positiveText);
+  void showMsg(
+    String msg, {
+    String title,
+    String positiveText = '确定',
+    String negativeText,
+    Function positivePressEvent,
+    Function negativePressEvent,
+    bool barrierDismissible = false,
+  }) {
+    prefix0.showMsg(context, msg,
+        title: title,
+        positiveText: positiveText,
+        negativeText: negativeText,
+        positivePressEvent: positivePressEvent,
+        negativePressEvent: negativePressEvent);
   }
 
-  void toast(String msg, {int gravity = 1}) {
-    prefix0.toast(context, msg, gravity: gravity);
+  void toast(
+    String msg, {
+    int gravity = 1,
+    int duration = 1,
+    Color backgroundColor = const Color(0xAA000000),
+    Color textColor = Colors.white,
+    double backgroundRadius = 20,
+    Border border,
+  }) {
+    prefix0.toast(context, msg,
+        gravity: gravity,
+        duration: duration,
+        backgroundColor: backgroundColor,
+        textColor: textColor,
+        backgroundRadius: backgroundRadius,
+        border: border);
   }
 
   showSnackBar(String text) {

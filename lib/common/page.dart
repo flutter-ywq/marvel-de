@@ -45,9 +45,9 @@ void toast(
       border: border);
 }
 
-void showMessage(
+void showMsg(
   BuildContext context,
-  String message, {
+  String msg, {
   String title,
   String positiveText = '确定',
   String negativeText,
@@ -55,11 +55,11 @@ void showMessage(
   Function negativePressEvent,
   bool barrierDismissible = false,
 }) {
-  message = message ?? '';
+  msg = msg ?? '';
   MessageDialog.show(
     context: context,
     title: title,
-    message: message,
+    message: msg,
     positiveText: positiveText,
     negativeText: negativeText,
     positivePressEvent: positivePressEvent,

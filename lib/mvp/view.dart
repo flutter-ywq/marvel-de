@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 /// @description View
 ///
@@ -6,9 +7,25 @@ import 'package:flutter/cupertino.dart';
 ///
 /// @date 2019-12-11
 mixin View {
-  showMsg(String msg, {String title, String positiveText});
+  void showMsg(
+    String msg, {
+    String title,
+    String positiveText = '确定',
+    String negativeText,
+    Function positivePressEvent,
+    Function negativePressEvent,
+    bool barrierDismissible = false,
+  });
 
-  void toast(String msg, {int gravity = 1});
+  void toast(
+    String msg, {
+    int gravity = 1,
+    int duration = 1,
+    Color backgroundColor = const Color(0xAA000000),
+    Color textColor = Colors.white,
+    double backgroundRadius = 20,
+    Border border,
+  });
 
   update({tag, params});
 
